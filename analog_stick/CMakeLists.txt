@@ -28,29 +28,29 @@ set(PICO_BOARD pico2 CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(blink C CXX ASM)
+project(analog_stick C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(blink blink.c )
+add_executable(analog_stick analog_stick.c )
 
-pico_set_program_name(blink "blink")
-pico_set_program_version(blink "0.1")
+pico_set_program_name(analog_stick "analog_stick")
+pico_set_program_version(analog_stick "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(blink 0)
-pico_enable_stdio_usb(blink 1)
+pico_enable_stdio_uart(analog_stick 0)
+pico_enable_stdio_usb(analog_stick 1)
 
 # Add the standard library to the build
-target_link_libraries(blink pico_stdlib hardware_adc)
+target_link_libraries(analog_stick pico_stdlib hardware_adc)
 
 # Add the standard include files to the build
-target_include_directories(blink PRIVATE
+target_include_directories(analog_stick PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
-pico_add_extra_outputs(blink)
+pico_add_extra_outputs(analog_stick)
 
